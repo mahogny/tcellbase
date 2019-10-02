@@ -1,3 +1,7 @@
+#chart-studio package and use the
+#2019-10-02T15:05:26.369189+00:00 app[web.1]: chart_studio.plotly module instead.
+
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
