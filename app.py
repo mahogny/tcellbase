@@ -1,13 +1,28 @@
+# Import required libraries
 import os
-from flask import Flask
+from random import randint
 
-app = Flask(__name__)
+import plotly.plotly as py
+from plotly.graph_objs import *
 
-@app.route('/')
-def hello():
-    return 'Hello World!'
+import flask
+import dash
+from dash.dependencies import Input, Output, State, Event
+import dash_core_components as dcc
+import dash_html_components as html
 
+
+# Setup the app
+# Make sure not to change this file name or the variable names below,
+# the template is configured to execute 'server' on 'app.py'
+server = flask.Flask(__name__)
+server.secret_key = os.environ.get('secret_key', str(randint(0, 1000000)))
+app = dash.Dash(__name__, server=server)
+
+
+# Put your Dash code here
+
+
+# Run the Dash app
 if __name__ == '__main__':
-	# Bind to PORT if defined, otherwise default to 5000.
-	port = int(os.environ.get('PORT', 5000))
-	app.run(host='0.0.0.0', port=port)
+    app.server.run(debug=True, threaded=True)
