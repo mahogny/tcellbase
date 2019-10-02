@@ -1,39 +1,40 @@
+# -*- coding: utf-8 -*-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
-from flask import Flask
-import os
+import pandas as pd
+import plotly.graph_objects as go
 
-server = Flask(__name__)
-server.secret_key = os.environ.get('secret_key', 'secret')
-app = dash.Dash(name = __name__, server = server)
-app.config.supress_callback_exceptions = True
 
+app = dash.Dash()
+server = app.server
+#Opens and reads file from url
+df = pd.read_csv('https://raw.githubusercontent.com/RasmusBurge/DBT-T-Cell/master/rawdata.csv', sep=";")
+
+#Decides the layout of web app with titles and labels
 app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
+    html.H1(children='Försök till visualisering'),
     html.Div(children='''
-        Dash: A web application framework for Python.
+        Grupp nr 6
     '''),
+#Grap line code with graph id
     dcc.Graph(
-        id='example-graph',    
+        id='Försök till datavisualisering',
         figure={
+            #Data points are chosen by defining which columns are y and x and then plotted from the csv-file through a scatter plot with lines.
+            # Names are put to each data series .
             'data': [
-                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
-            ],
-            'layout': {
-                'title': 'Dash Data Visualization'
-            }
-        }
-    ),
-    dcc.Input(id='my-id', value='initial value', type="text"),
-    html.Div(id='my-div')
-])
+                go.Scatter(x=df.Tidpunkter, y=df.ENSG00000283297, name='ENSG00000283297', mode='lines+markers'),
+                go.Scatter(x=df.Tidpunkter, y=df.ENSG00000283573, name='ENSG00000283573 ', mode='lines+markers'),
+                go.Scatter(x=df.Tidpunkter, y=df.ENSG00000282961, name='ENSG00000282961 ', mode='lines+markers')
 
-@app.callback(
-    Output(component_id='my-div', component_property='children'),
-    [Input(component_id='my-id', component_property='value')]
-)
-def update_output_div(input_value):
-    return 'You\'ve entered "{}"'.format(input_value)
+            ],
+            #Title label for graph, and for y and x axis.
+            'layout': go.Layout(
+                title='TH0 Genexpression över tid',
+                xaxis={'title' : 'Tid(h)'},
+                yaxis={'title': 'Expression .../...'},
+            )
+        })])
+
+
