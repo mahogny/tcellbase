@@ -1,0 +1,21 @@
+sample,organism,Cell Type,method,hours
+mouse_tcavg_th2_0h,mouse,Th2,RNAseq,0
+mouse_tcavg_th2_0.5h,mouse,Th2,RNAseq,0.5
+mouse_tcavg_th2_1h,mouse,Th2,RNAseq,1
+mouse_tcavg_th2_2h,mouse,Th2,RNAseq,2
+mouse_tcavg_th2_4h,mouse,Th2,RNAseq,4
+mouse_tcavg_th2_6h,mouse,Th2,RNAseq,6
+mouse_tcavg_th2_12h,mouse,Th2,RNAseq,12
+mouse_tcavg_th2_24h,mouse,Th2,RNAseq,24
+mouse_tcavg_th2_48h,mouse,Th2,RNAseq,48
+mouse_tcavg_th2_72h,mouse,Th2,RNAseq,72
+mouse_tcavg_th0_0h,mouse,Th0,RNAseq,0
+mouse_tcavg_th0_0.5h,mouse,Th0,RNAseq,0.5
+mouse_tcavg_th0_1h,mouse,Th0,RNAseq,1
+mouse_tcavg_th0_2h,mouse,Th0,RNAseq,2
+mouse_tcavg_th0_4h,mouse,Th0,RNAseq,4
+mouse_tcavg_th0_6h,mouse,Th0,RNAseq,6
+mouse_tcavg_th0_12h,mouse,Th0,RNAseq,12
+mouse_tcavg_th0_24h,mouse,Th0,RNAseq,24
+mouse_tcavg_th0_48h,mouse,Th0,RNAseq,48
+mouse_tcavg_th0_72h,mouse,Th0,RNAseq,72

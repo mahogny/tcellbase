@@ -39,7 +39,7 @@ heatmap_thexpress = RenderableHeatmap(
 )
 
 heatmap_mtor = RenderableHeatmap(
-    pd.read_csv('unprocessed/mTORCpaper/processed_raw.csv', sep="\t", index_col="Ensembl Gene ID"),
+    pd.read_csv('processed/mTORCpaper/processed_raw.csv', sep="\t", index_col="Ensembl Gene ID"),
     map_ensembl_genesym_mouse,
     "Howden et al 2019 (proteomics MS)",
     ["CD4 naive","CD4 tcr","CD4 Th1","CD8 tcr","CD8 naive"]

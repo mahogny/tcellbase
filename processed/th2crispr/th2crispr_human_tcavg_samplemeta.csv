@@ -1,0 +1,21 @@
+sample,organism,Cell Type,method,hours
+human_tcavg_th2_0h,human,Th2,RNAseq,0
+human_tcavg_th2_0.5h,human,Th2,RNAseq,0.5
+human_tcavg_th2_1h,human,Th2,RNAseq,1
+human_tcavg_th2_2h,human,Th2,RNAseq,2
+human_tcavg_th2_4h,human,Th2,RNAseq,4
+human_tcavg_th2_6h,human,Th2,RNAseq,6
+human_tcavg_th2_12h,human,Th2,RNAseq,12
+human_tcavg_th2_24h,human,Th2,RNAseq,24
+human_tcavg_th2_48h,human,Th2,RNAseq,48
+human_tcavg_th2_72h,human,Th2,RNAseq,72
+human_tcavg_th0_0h,human,Th0,RNAseq,0
+human_tcavg_th0_0.5h,human,Th0,RNAseq,0.5
+human_tcavg_th0_1h,human,Th0,RNAseq,1
+human_tcavg_th0_2h,human,Th0,RNAseq,2
+human_tcavg_th0_4h,human,Th0,RNAseq,4
+human_tcavg_th0_6h,human,Th0,RNAseq,6
+human_tcavg_th0_12h,human,Th0,RNAseq,12
+human_tcavg_th0_24h,human,Th0,RNAseq,24
+human_tcavg_th0_48h,human,Th0,RNAseq,48
+human_tcavg_th0_72h,human,Th0,RNAseq,72
