@@ -22,10 +22,6 @@ class RenderableTC(object):
         self.map_ensembl_genesym = map_ensembl_genesym
 
     def render_tc(self, name_of_gene):
-        print(self.tcname)
-        print(self.map_ensembl_genesym.head())
-        print(self.map_ensembl_genesym['Associated Gene Name lc'])
-        print(name_of_gene.lower())
 
         #Test a precise match first
         found_genes = self.map_ensembl_genesym[self.map_ensembl_genesym['Associated Gene Name lc']==name_of_gene.lower()]
@@ -34,7 +30,6 @@ class RenderableTC(object):
         if found_genes.empty or name_of_gene=="":
             found_genes = self.map_ensembl_genesym[self.map_ensembl_genesym['Associated Gene Name lc'].str.startswith(name_of_gene.lower())]
 
-        print(found_genes)
         if found_genes.empty or name_of_gene=="":
             return "Please select a gene to display"
 

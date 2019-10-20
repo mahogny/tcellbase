@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import math
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -8,6 +9,7 @@ import numpy
 from dash.dependencies import Input, Output
 
 from timecourse import RenderableTC
+from heatmap_gene import RenderableHeatmap
 
 #Opens and reads file from url -- could be useful on heroku to avoid huge uploads through GIT
 #df = pd.read_csv('https://raw.githubusercontent.com/RasmusBurge/DBT-T-Cell/master/rawdata.csv', sep=";")
@@ -24,9 +26,27 @@ map_ensembl_genesym_mouse = pd.read_csv('processed/ensembl_mouse.csv', sep=",")
 ### Read gene symbol mapping tables. Create a lower case version of symbol for fast search later
 map_ensembl_genesym_human = pd.read_csv('processed/ensembl_human.csv', sep=",")
 
+#foo = pd.read_csv('unprocessed/mTORCpaper/processed_raw.csv', sep="\t", index_col="Ensembl Gene ID")
+#print(foo.head)
+#exit(0)
+
+### Read heatmap, ThExpress RNAseq
+heatmap_thexpress = RenderableHeatmap(
+    pd.read_csv('processed/ThExpress/meanNormalisedCounts.txt', sep="\t", index_col="Ensembl Gene ID"),
+    map_ensembl_genesym_mouse,
+    "Stubbington et al 2015 (RNA-seq)",
+    ["naive", "Th1", "Th2", "Th17", "iTreg", "nTreg"]
+)
+
+heatmap_mtor = RenderableHeatmap(
+    pd.read_csv('unprocessed/mTORCpaper/processed_raw.csv', sep="\t", index_col="Ensembl Gene ID"),
+    map_ensembl_genesym_mouse,
+    "Howden et al 2019 (proteomics MS)",
+    ["CD4 naive","CD4 tcr","CD4 Th1","CD8 tcr","CD8 naive"]
+)
 
 
-heatmap_data = pd.read_csv('processed/ThExpress/meanNormalisedCounts.txt', sep=",")
+
 
 
 ### Prepare suggestions for gene names
@@ -87,12 +107,24 @@ app.layout = html.Div(children=[
       ]
     ),
 
+    html.Div(
+        children=[
+            dcc.Graph(id="heatmap_the",  style={"width": "49%", 'display': 'inline-block'}),
+            dcc.Graph(id="heatmap_mtor", style={"width": "49%", 'display': 'inline-block'}),
+
+        ]
+    ),
+
+
     dcc.Tabs(id="tabs", value='tab-1', children=[
         dcc.Tab(label='Tab one', value='tab-1'),
         dcc.Tab(label='Tab two', value='tab-2'),
     ]),
 
     ])
+
+
+
 
 
 
@@ -130,6 +162,33 @@ def render_content(tab):
         return html.Div([
             html.H3('Tab content 2')
         ])
+
+
+
+
+
+
+
+
+
+
+
+
+
+######### Heatmaps
+@app.callback(
+    Output("heatmap_the", "figure"),
+    [Input("input-gene-name", "value")]
+)
+def update_heatmap_the(name_of_gene):
+    return heatmap_thexpress.render_heatmap(name_of_gene)
+
+@app.callback(
+    Output("heatmap_mtor", "figure"),
+    [Input("input-gene-name", "value")]
+)
+def update_heatmap_mtor(name_of_gene):
+    return heatmap_mtor.render_heatmap(name_of_gene)
 
 
 
