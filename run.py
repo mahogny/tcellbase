@@ -98,8 +98,11 @@ tc_mara_human = RenderableMARA(
 print("====== starting server =========\n");
 
 
+
+prefix="/"    #on heroku
+#prefix="/tcell/"
 server = flask.Flask(__name__)
-app = dash.Dash(__name__, server=server, routes_pathname_prefix='/tcell/')
+app = dash.Dash(__name__, server=server, routes_pathname_prefix=prefix)
 app.title = "T cell data visualizer"
 
 #Decides the layout of web app with titles and labels
@@ -245,3 +248,9 @@ def render_content(tab):
 if __name__ == '__main__':
     app.run_server(debug=True)
 
+
+
+
+@app.route('/wtf')
+def index():
+    return "wtf"
