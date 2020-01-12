@@ -57,10 +57,8 @@ gene_suggestions = []
 #map_ensembl_genesym['Associated Gene Name']
 #!! TODO problem. if giving all the gene symbols the browser crashes. should search and only provide an approximate list. for now, ignore problem
 
-
-
 ### Prepare suggestions for motif names
-motif_suggestions = pd.read_feather("processed/mara/henrikssonHumanTF/motif_ranking.feather")["motif"].to_list()
+motif_suggestions = pd.read_feather("processed/mara/henrikssonMouseTF/motif_ranking.feather")["motif"].to_list()
 
 
 ### Mouse time-course RNA-seq
