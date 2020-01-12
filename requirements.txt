@@ -15,3 +15,4 @@ panda==0.3.1
 pandas==0.25.1
 plotly==4.1.1
 dash-bio==0.1.4
+pyarrow>=0.15.0

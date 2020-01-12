@@ -1,6 +1,6 @@
 run:
 	python3 run.py
-push:
+heroku:
 	git push heroku master
 all:
 	git commit -a
