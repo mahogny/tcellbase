@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import flask
 import math
 import dash
 import dash_core_components as dcc
@@ -82,9 +83,10 @@ tc_human = RenderableTC(
 ##################################################################################################################
 print("====== starting server =========\n");
 
-app = dash.Dash()
+
+server = flask.Flask(__name__)
+app = dash.Dash(__name__, server=server, routes_pathname_prefix='/tcell/')
 app.title = "T cell data visualizer"
-server = app.server
 
 #Decides the layout of web app with titles and labels
 app.layout = html.Div(children=[
@@ -197,5 +199,3 @@ if __name__ == '__main__':
 
 
 #        raise PreventUpdate
-
-
