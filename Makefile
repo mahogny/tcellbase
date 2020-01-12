@@ -4,7 +4,7 @@ push:
 	git push heroku master
 all:
 	git commit -a
-upgit:
+github:
 	git push -u origin master
 rung:
 	gunicorn run:server -b :8001 -n tcellbase
