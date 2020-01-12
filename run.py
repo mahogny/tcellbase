@@ -12,6 +12,7 @@ from dash.dependencies import Input, Output
 from timecourse import RenderableTC
 from heatmap_gene import RenderableHeatmap
 from mara import RenderableMARA
+import os
 
 #Opens and reads file from url -- could be useful on heroku to avoid huge uploads through GIT
 #df = pd.read_csv('https://raw.githubusercontent.com/RasmusBurge/DBT-T-Cell/master/rawdata.csv', sep=";")
@@ -98,6 +99,10 @@ tc_mara_human = RenderableMARA(
 print("====== starting server =========\n");
 
 
+
+ON_HEROKU = 'ON_HEROKU' in os.environ
+if ON_HEROKU=="1":
+    print("on heroku")
 
 prefix="/"    #on heroku
 #prefix="/tcell/"
@@ -251,6 +256,3 @@ if __name__ == '__main__':
 
 
 
-@app.route('/wtf')
-def index():
-    return "wtf"

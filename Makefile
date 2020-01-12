@@ -13,3 +13,6 @@ rung:
 	#-n dctoxo
 	#--chdir  if we do not cd first...
 	#--forwarded-allow-ips="130.239.192.39"
+
+setheroku:
+	heroku config:set ON_HEROKU=1
